@@ -1,16 +1,21 @@
 {
   "name": "dynamic-loading-script",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dynamic script loading.",
   "types": "./index.d.ts",
   "main": "index.js",
   "scripts": {},
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "keywords": [
     "dynamic"
   ],
   "author": "guoshuangyang@qq.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guoshuangyang/dynamic-loading-script"
+  },
   "license": "MIT"
 }
