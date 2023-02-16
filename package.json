@@ -1,0 +1,16 @@
+{
+  "name": "dynamic-loading-script",
+  "version": "1.0.0",
+  "description": "Dynamic script loading.",
+  "types": "./index.d.ts",
+  "main": "index.js",
+  "scripts": {},
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "dynamic"
+  ],
+  "author": "guoshuangyang@qq.com",
+  "license": "MIT"
+}
