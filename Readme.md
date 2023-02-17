@@ -4,6 +4,12 @@
 + 如果脚本已经加载，直接执行回调函数，避免重复加载
 + 如果脚本未加载，先加载脚本，再执行回调函数
 
+
+
+### 注意事项
++ 异步加载js - 如果js已经加载过，则直接返回 如果cdn不是直接返回js类方法，而是采用jsonp的方式, 请不要传入 option.callback 参数, 避免业务代码中的callback执行时机不对
++ 使用示例下方有 采用jsonp的方式加载js请务必在jsonp的回调中执行业务代码
+
 ## 安装
 
 ``` bash
@@ -55,6 +61,20 @@ dynamicLoadScript(
     variableName: "BMapGL",
   }
 );
+```
+
+``` javascript
+
+import dynamicLoadScript from "dynamic-loading-script";
+dynamicLoadScript(
+  "https://cdn.bootcdn.net/ajax/libs/echarts/5.0.2/echarts.min.js",
+  {
+    variableName: "echarts",
+  }
+).then((echarts) => {
+  console.log(echarts);
+});
+
 ```
 
 
