@@ -1,4 +1,4 @@
-# dynamic-load-script
+# dynamic-loading-script
 
 动态加载脚本，并根据脚本的加载情况，执行回调函数。
 + 如果脚本已经加载，直接执行回调函数，避免重复加载
@@ -7,11 +7,11 @@
 ## 安装
 
 ``` bash
-npm install dynamic-load-script --save
+npm install dynamic-loading-script --save
 ```
 
 ``` bash
-yarn add dynamic-load-script --save
+yarn add dynamic-loading-script --save
 ```
 
 ## 使用
@@ -30,7 +30,7 @@ yarn add dynamic-load-script --save
 
 ``` javascript
 // 引入改js后，可以直接获取js库变量（类）的例子
-import dynamicLoadScript from 'dynamic-load-script'
+import dynamicLoadScript from 'dynamic-loading-script'
 
 dynamicLoadScript('https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js', {
     variableName: '$',
@@ -43,7 +43,7 @@ dynamicLoadScript('https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js'
 ``` javascript
 // 引入改js后 通过回调函数（JSONP）获取js库变量（类）的例子
 // 下方是引入百度地图的例子
-import asyncLoadScript from 'dynamic-load-script'
+import asyncLoadScript from 'dynamic-loading-script'
 
 window.init = () => {
   // 业务代码在此处执行

@@ -62,3 +62,4 @@ const dynamicLoadScript = (src, opts, backupSrc) =>
   });
 
 export default dynamicLoadScript;
+module.exports = dynamicLoadScript;
