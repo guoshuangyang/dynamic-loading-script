@@ -1,21 +1,35 @@
 {
   "name": "dynamic-loading-script",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Dynamic script loading.",
-  "types": "./index.d.ts",
   "module": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --target esnext index.ts",
+    "dev": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --watch --target es2018 index.ts"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
   "keywords": [
-    "dynamic"
+    "dynamic",
+    "loader",
+    "script",
+    "esm"
   ],
   "author": "guoshuangyang@qq.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/guoshuangyang/dynamic-loading-script"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6"
+  }
 }
