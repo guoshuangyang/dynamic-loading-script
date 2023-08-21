@@ -1,6 +1,6 @@
 {
   "name": "dynamic-loading-script",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Dynamic script loading.",
   "module": "index.js",
   "scripts": {
