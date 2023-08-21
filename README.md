@@ -7,8 +7,7 @@
 
 
 ### 注意事项
-+ 异步加载js - 如果js已经加载过，则直接返回 如果cdn不是直接返回js类方法，而是采用jsonp的方式, 请不要传入 option.callback 参数, 避免业务代码中的callback执行时机不对
-+ 使用示例下方有 采用jsonp的方式加载js请务必在jsonp的回调中执行业务代码
++ 异步加载js - 如果js已经加载过，则直接返回 如果cdn不是直接返回js类方法，而是采用jsonp的方式, 请务必传入jsonpCallbackName参数
 
 ## 安装
 
@@ -31,34 +30,25 @@ yarn add dynamic-loading-script --save
 | opts.variableName      | String          | 脚本中的变量名，如果脚本中有变量名，可以通过该参数获取到该变量 | 无     | 是   |
 | opts.callback          | Function        | 脚本加载完成后的回调函数, 此属性存在时                       | 无     | 否   |
 | opts.jsonpCallbackName | String          | 脚本的jsonp方法名                                            | 无     | 否   |
-| opts.timeout           | Boolean\|number | 是否在超时之后移除script标签                                 | false  | 否   |
+| opts.timeout           | number | 是否在超时之后移除script标签                                 | false  | 否   |
+
+
+**使用jsonp的形式参见[jsonp示例](./example/index.js)**
 
 
 ``` javascript
-// 引入改js后，可以直接获取js库变量（类）的例子
+// 引入改js后，可以直接获取js库变量（类）的例子,
 import dynamicLoadScript from 'dynamic-loading-script'
 
-dynamicLoadScript('https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js', {
-    variableName: '$',
-    callback:($) => {
-        console.log('jquery loaded', $)
+dynamicLoadScript('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js', {
+    variableName: 'axios',
+    callback:(axios) => {
+        console.log('axios loaded', axios)
+        console.log('axios', window.axios)
     }
 })
 ```
 
-``` javascript
-// 引入改js后 通过回调函数（JSONP）获取js库变量（类）的例子
-// 下方是引入百度地图的例子
-import dynamicLoadScript from 'dynamic-loading-script'
-
-dynamicLoadScript(
-  "https://api.map.baidu.com/api?v=1.0&type=webgl&ak=你的ak&callback=init",
-  {
-    variableName: "BMapGL",
-    jsonpCallbackName: "init"
-  }
-);
-```
 
 ``` javascript
 
@@ -75,3 +65,6 @@ dynamicLoadScript( "https://cdn.bootcdn.net/ajax/libs/echarts/5.0.2/echarts.min.
 
 
 
+### 注意
+
++ $已经为window已存在的变量，故动态加载jquery不会成功

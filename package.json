@@ -5,7 +5,8 @@
   "module": "index.js",
   "scripts": {
     "build": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --target esnext index.ts",
-    "dev": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --watch --target es2018 index.ts"
+    "dev": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --watch --target es2018 index.ts",
+    "jest": "jest"
   },
   "exports": {
     ".": {
@@ -29,7 +30,11 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^20.5.1",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }

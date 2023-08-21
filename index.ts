@@ -23,11 +23,13 @@ export default function (url: string, option: Options): Promise<any> {
       if (jsonpCallbackName) {
         window[jsonpCallbackName] = () => {
           resolve(window[variableName])
+          delete window[jsonpCallbackName]
+          timer && clearTimeout(timer)
           callback && callback(window[variableName])
         }
       }
       if (timeout !== false) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           if (!window[variableName]) {
             // 取消加载
             script.onload = null
@@ -41,6 +43,7 @@ export default function (url: string, option: Options): Promise<any> {
       script.src = url
       script.type = 'text/javascript'
       script.onload = () => {
+        if (jsonpCallbackName) return
         timer && clearTimeout(timer)
         callback && callback(window[variableName])
         resolve(window[variableName])
@@ -49,7 +52,7 @@ export default function (url: string, option: Options): Promise<any> {
         timer && clearTimeout(timer)
         reject(new Error('加载失败'))
       }
-      document.body.appendChild(script)
+      document.head.appendChild(script)
     } else {
       throw new Error('url类型不正确')
     }
