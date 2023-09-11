@@ -1,6 +1,6 @@
 {
   "name": "dynamic-loading-script",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Dynamic script loading.",
   "scripts": {
     "build": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --target esnext index.ts",
