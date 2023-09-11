@@ -2,12 +2,12 @@
   "name": "dynamic-loading-script",
   "version": "1.0.8",
   "description": "Dynamic script loading.",
-  "module": "index.js",
   "scripts": {
     "build": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --target esnext index.ts",
     "dev": "tsup --format cjs,esm --dts-resolve --clean --sourcemap --watch --target es2018 index.ts",
     "jest": "jest"
   },
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
